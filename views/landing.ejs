@@ -1,37 +1,79 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <title>Travel</title>
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
-        <link rel="stylesheet" href="/stylesheets/landing.css">
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.3/modernizr.min.js" type="text/javascript" async></script>
-    </head>
-    <body>
-    
+
+<head>
+    <title>Travel</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+        crossorigin="anonymous">
+    <link rel="stylesheet" href="/stylesheets/landing.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.3/modernizr.min.js" type="text/javascript" async></script>
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300,700" rel="stylesheet">
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+        crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.5.2/animate.min.css">
+</head>
+
+<body>
+    <script>
+        document.body.className += ' fade-out';
+    </script>
+    <div class="backgroundContainer"></div>
+    <nav class="navbar navbar-expand-lg navbar-dark" style="background-color: rgba(0,0,0,0);">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="/" id="navBrand">T</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+                aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav ml-auto">
+                    <%if(!currentUser){%>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/login">LOGIN</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/register">SIGN UP</a>
+                        </li>
+                        <% }else{%>
+                            <span class="navbar-text">
+                                SIGNED IN AS
+                                <%=currentUser.username.toUpperCase()%>
+                            </span>
+                            <li class="nav-bar">
+                                <a class="nav-link" href="/logout">LOGOUT</a>
+                            </li>
+                            <% }%>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
     <div class="container">
         <% if(error && error.length > 0){ %>
             <div class="alert alert-danger" role="alert">
                 <%= error %>
             </div>
-        <% } %>
-        <% if(success && success.length > 0){ %>
-            <div class="alert alert-success" role="alert">
-                <%= success %>
-            </div>
-        <% } %>
+            <% } %>
+                <% if(success && success.length > 0){ %>
+                    <div class="alert alert-success" role="alert">
+                        <%= success %>
+                    </div>
+                    <% } %>
     </div>
-    
-    <div id="landing-header">
- 		<h1>Welcome to Travel!</h1>
-		<a href="/hotels" class="btn btn-lg btn-success">View All Travel Sites</a>
-    </div>
-    
-    <ul class="slideshow">
-      <li></li>
-      <li></li>
-      <li></li>
-      <li></li>
-      <li></li>
-    </ul>
 
-<% include partials/footer %>
+    <div class="container2">
+        <h1 class="animated zoomIn" id="title">TRAVEL</h1>
+        <h3>YOUR PARADISE IS NEAR</h3>
+        <!-- <button type="button" class="btn btn-light">More Info Here...</button> -->
+    </div>
+    <script>
+        $(function () {
+            $('body').removeClass('fade-out');
+        });
+    </script>
+    <a id="view" href="/hotels">VIEW OUR HOTELS</a>
+
+
+
+
+    <% include partials/footer %>

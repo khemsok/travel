@@ -6,13 +6,14 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <link rel = "stylesheet" href = "/stylesheets/main.css">
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300,700" rel="stylesheet">
     <title>Travel</title>
 </head>
-<body>
+<body class = "indexPage">
 
-        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <nav class="navbar navbar-expand-lg navbar-dark" style = "background-color: rgba(0,0,0,0);">
                 <div class="container-fluid">
-                    <a class="navbar-brand" href="/">Travel</a>
+                    <a class="navbar-brand" href="/" id = "navBrand">T</a>
                     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
                         aria-expanded="false" aria-label="Toggle navigation">
                         <span class="navbar-toggler-icon"></span>
@@ -21,17 +22,17 @@
                         <ul class="navbar-nav ml-auto">
                             <%if(!currentUser){%>
                             <li class="nav-item">
-                                <a class="nav-link" href="/login">Login</a>
+                                <a class="nav-link" href="/login">LOGIN</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="/register">Sign Up</a>
+                                <a class="nav-link" href="/register">SIGN UP</a>
                             </li>
                            <% }else{%>
     <span class="navbar-text">
-      Signed In As <%=currentUser.username%>
+      SIGNED IN AS <%=currentUser.username.toUpperCase()%>
     </span>
                             <li class="nav-bar">
-                                <a class="nav-link" href="/logout">Logout</a>
+                                <a class="nav-link" href="/logout">LOGOUT</a>
                             </li>
                            <% }%>
                         </ul>

@@ -1,81 +1,109 @@
-body{
-    background-color: #000;
-}
-
-#landing-header{
-    z-index: 1;
-    position: relative;
-    text-align: center;
-    padding-top: 40vh;
-}
-
-#landing-header h1{
-    color: #fff;
-}
-
-.slideshow { 
-  position: fixed;
+body,
+html {
+  background-color: #000;
+  font-family: 'Open Sans Condensed', sans-serif;
+  color: white;
   width: 100%;
   height: 100%;
-  top: 0;
-  left: 0;
-  z-index: 0;
-  list-style: none;
-  margin: 0;
-  padding: 0;
+  opacity: 1;
+  transition: 2s opacity;
+  background: linear-gradient(268deg, #7fefd2, #ff7171, #cb68fe, #779bfe, #d8d1d8);
+  background-size: 1000% 1000%;
+  
+  -webkit-animation: AnimationName 24s ease infinite;
+  -moz-animation: AnimationName 24s ease infinite;
+  animation: AnimationName 24s ease infinite;
 }
 
-.slideshow li { 
+@-webkit-keyframes AnimationName {
+  0%{background-position:0% 43%}
+  50%{background-position:100% 58%}
+  100%{background-position:0% 43%}
+}
+@-moz-keyframes AnimationName {
+  0%{background-position:0% 43%}
+  50%{background-position:100% 58%}
+  100%{background-position:0% 43%}
+}
+@keyframes AnimationName { 
+  0%{background-position:0% 43%}
+  50%{background-position:100% 58%}
+  100%{background-position:0% 43%}
+}
+
+body.fade-out {
+  opacity: 0;
+  transition: none;
+}
+
+.backgroundContainer {
+  background-image: url("https://i.imgur.com/GYoX1IA.jpg");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center center;
   width: 100%;
   height: 100%;
+  opacity: .7;
   position: absolute;
   top: 0;
   left: 0;
-  background-size: cover;
-  background-position: 50% 50%;
-  background-repeat: no-repeat;
-  opacity: 0;
-  z-index: 0;
-  animation: imageAnimation 50s linear infinite; 
 }
 
-.slideshow li:nth-child(1) { 
-  background-image: url(http://i.imgur.com/K3mPv14.jpg) 
-}
-.slideshow li:nth-child(2) { 
-  background-image: url(http://i.imgur.com/SBEmFpv.jpg);
-  animation-delay: 10s; 
-}
-.slideshow li:nth-child(3) { 
-  background-image: url(http://i.imgur.com/emvhOnb.jpg);
-  animation-delay: 20s; 
-}
-.slideshow li:nth-child(4) { 
-  background-image: url(http://i.imgur.com/2LSMCmJ.jpg);
-  animation-delay: 30s; 
-}
-.slideshow li:nth-child(5) { 
-  background-image: url(http://i.imgur.com/TVGe0Ef.jpg);
-  animation-delay: 40s; 
+.container2 {
+  width: 100%;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
 }
 
-@keyframes imageAnimation { 
-  0% { 
-    opacity: 0; 
-    animation-timing-function: ease-in;
-  }
-  10% {
-    opacity: 1;
-    animation-timing-function: ease-out;
-  }
-  20% {
-    opacity: 1
-  }
-  30% {
-    opacity: 0
-  }
+#title {
+  text-align: center;
+  font-size: 20em;
+  font-weight: 700;
+  letter-spacing: -15px;
+  margin: 0;
+  padding: 0;
+  line-height: 250px;
 }
 
-.no-cssanimations .slideshow li {
-	opacity: 1;
+h3 {
+  text-align: center;
+  font-size: 3em;
+  margin: 0;
+  padding: 0;
+  letter-spacing: 15px;
+  margin-left: 45px;
+}
+
+h2 {
+  position: absolute;
+  bottom: 25px;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.btn-light {
+  display: block;
+  margin: 0 auto;
+}
+
+#view {
+  font-size: 1.2em;
+  color: white;
+  text-decoration: none;
+  position: absolute;
+  bottom: 25px;
+  right: 25px;
+  letter-spacing: 2px;
+  transition: color .5s;
+}
+
+#view:hover {
+  text-decoration: none;
+  color: #747474;
+}
+
+#navBrand {
+  font-size: 2em;
+  font-weight: 700;
 }
