@@ -1,13 +1,13 @@
 // All the middleware goes here
-var Campground = require("../models/campground")
+var Hotel = require("../models/hotel")
 var Comment = require("../models/comment")
 var flash = require("connect-flash");
 
 var middlewareObj = {};
 
-middlewareObj.checkCampgroundOwnership = function(req, res, next) {
+middlewareObj.checkHotelOwnership = function(req, res, next) {
     if (req.isAuthenticated()) {
-        Campground.findById(req.params.id, function(err, foundCampground) {
+        Hotel.findById(req.params.id, function(err, foundHotel) {
             //Does the user own the campground
 
             if (err) {
@@ -18,7 +18,7 @@ middlewareObj.checkCampgroundOwnership = function(req, res, next) {
 
                 // Does user own the campground?
 
-                if (foundCampground.author.id.equals(req.user._id)) {
+                if (foundHotel.author.id.equals(req.user._id)) {
 
                     next();
                 }

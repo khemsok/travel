@@ -1,6 +1,6 @@
 var express = require("express");
 var router = express.Router();
-var Campground = require("../models/campground");
+var Hotel = require("../models/hotel");
 var middleware = require("../middleware");
 
 var NodeGeocoder = require('node-geocoder');
@@ -17,13 +17,13 @@ var geocoder = NodeGeocoder(options);
 
 
 router.get("/", function(req, res) {
-    Campground.find({}, function(err, allCampgrounds) {
+    Hotel.find({}, function(err, allHotels) {
         if (err) {
             console.log(err);
         }
         else {
-            res.render("campgrounds/index", {
-                campgrounds: allCampgrounds
+            res.render("hotels/index", {
+                hotels: allHotels
             });
         }
     });
@@ -32,9 +32,9 @@ router.get("/", function(req, res) {
 });
 
 
-//CREATE - add new campground to DB
+//CREATE - add new hotel to DB
 router.post("/", middleware.isLoggedIn, function(req, res){
-  // get data from form and add to campgrounds array
+  // get data from form and add to hotels array
   var name = req.body.name;
   var image = req.body.image;
   var desc = req.body.desc;
@@ -51,32 +51,32 @@ router.post("/", middleware.isLoggedIn, function(req, res){
     var lat = data[0].latitude;
     var lng = data[0].longitude;
     var location = data[0].formattedAddress;
-    var newCampground = {name: name, price: price, image: image, description: desc, author:author, location: location, lat: lat, lng: lng};
-    // Create a new campground and save to DB
-    Campground.create(newCampground, function(err, newlyCreated){
+    var newHotel = {name: name, price: price, image: image, description: desc, author:author, location: location, lat: lat, lng: lng};
+    // Create a new hotel and save to DB
+    Hotel.create(newHotel, function(err, newlyCreated){
         if(err){
             console.log(err);
         } else {
-            //redirect back to campgrounds page
+            //redirect back to hotels page
             console.log(newlyCreated);
-            res.redirect("/campgrounds");
+            res.redirect("/hotels");
         }
     });
   });
 });
 
 router.get("/new", middleware.isLoggedIn, function(req, res) {
-    res.render("campgrounds/new");
+    res.render("hotels/new");
 });
 
 router.get("/:id", function(req, res) {
 
-    Campground.findById(req.params.id).populate("comments").exec(function(err, el) {
+    Hotel.findById(req.params.id).populate("comments").exec(function(err, el) {
         if (err) {
             console.log(err);
         }
         else {
-            res.render("campgrounds/show", { campground: el });
+            res.render("hotels/show", { hotel: el });
         }
     });
 });
@@ -85,49 +85,49 @@ router.get("/:id", function(req, res) {
 
 // EDIT ROUTE
 
-router.get("/:id/edit", middleware.checkCampgroundOwnership, function(req, res) {
+router.get("/:id/edit", middleware.checkHotelOwnership, function(req, res) {
     // Check if user is logged in
 
-        Campground.findById(req.params.id, function(err, foundCampground) {
-                    res.render("campgrounds/edit", { campground: foundCampground });
+        Hotel.findById(req.params.id, function(err, foundHotel) {
+                    res.render("hotels/edit", { hotel: foundHotel });
                 });
 });
 
 
 // UPDATE ROUTE
 
-// UPDATE CAMPGROUND ROUTE
-router.put("/:id", middleware.checkCampgroundOwnership, function(req, res){
+// UPDATE hotel ROUTE
+router.put("/:id", middleware.checkHotelOwnership, function(req, res){
   geocoder.geocode(req.body.location, function (err, data) {
     if (err || !data.length) {
       req.flash('error', 'Invalid address');
       return res.redirect('back');
     }
-    req.body.campground.lat = data[0].latitude;
-    req.body.campground.lng = data[0].longitude;
-    req.body.campground.location = data[0].formattedAddress;
+    req.body.hotel.lat = data[0].latitude;
+    req.body.hotel.lng = data[0].longitude;
+    req.body.hotel.location = data[0].formattedAddress;
 
-    Campground.findByIdAndUpdate(req.params.id, req.body.campground, function(err, campground){
+    Hotel.findByIdAndUpdate(req.params.id, req.body.hotel, function(err, hotel){
         if(err){
             req.flash("error", err.message);
             res.redirect("back");
         } else {
             req.flash("success","Successfully Updated!");
-            res.redirect("/campgrounds/" + campground._id);
+            res.redirect("/hotels/" + hotel._id);
         }
     });
   });
 });
-// DELETE CAMPGROUND
+// DELETE hotel
 
-router.delete("/:id", middleware.checkCampgroundOwnership, function(req, res) {
-    Campground.findByIdAndRemove(req.params.id, function(err) {
+router.delete("/:id", middleware.checkHotelOwnership, function(req, res) {
+    Hotel.findByIdAndRemove(req.params.id, function(err) {
         if (err) {
             console.log(err);
         }
         else {
-            req.flash("success", "Campground deleted")
-            res.redirect("/campgrounds");
+            req.flash("success", "Hotel deleted")
+            res.redirect("/hotels");
         }
     });
 });

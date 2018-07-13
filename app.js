@@ -4,7 +4,7 @@ var express = require("express"),
     app = express(),
     bodyParser = require("body-parser"),
     mongoose = require("mongoose"),
-    Campground = require("./models/campground"),
+    Hotel = require("./models/hotel"),
     seedDB = require("./seeds"),
     Comment = require("./models/comment"),
     passport = require("passport"),
@@ -16,7 +16,7 @@ var express = require("express"),
 // Requiring routes
 
 var commentRoutes = require("./routes/comments"),
-    campgroundRoutes = require("./routes/campgrounds"),
+    hotelRoutes = require("./routes/hotels"),
     indexRoutes = require("./routes/index");
 
 app.set("view engine", "ejs");
@@ -56,8 +56,8 @@ app.use(function(req,res, next){
 });
 
 app.use(indexRoutes);
-app.use("/campgrounds", campgroundRoutes);
-app.use("/campgrounds/:id/comments",commentRoutes);
+app.use("/hotels", hotelRoutes);
+app.use("/hotels/:id/comments",commentRoutes);
 
 app.listen(3000, function() {
     console.log("Server has started");

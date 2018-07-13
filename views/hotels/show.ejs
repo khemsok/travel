@@ -16,16 +16,16 @@
         
         
         <div class = "col-md-9">
-            <img src = "<%=campground.image%>" class = "img-thumbnail img-responsive">
+            <img src = "<%=hotel.image%>" class = "img-thumbnail img-responsive">
             <div class = "caption-full">
-                <h4 class = "float-right">$<%=campground.price%> per night</h4>
-                <h4><a><%=campground.name%></a></h4>
-                <p><%=campground.description%> </p>
-                <p><em>Submitted By <strong><%=campground.author.username%></strong>, <%=moment(campground.createdAt).fromNow()%></em></p>
+                <h4 class = "float-right">$<%=hotel.price%> per night</h4>
+                <h4><a><%=hotel.name%></a></h4>
+                <p><%=hotel.description%> </p>
+                <p><em>Submitted By <strong><%=hotel.author.username%></strong>, <%=moment(hotel.createdAt).fromNow()%></em></p>
                 
-                <% if(currentUser && campground.author.id.equals(currentUser._id)){ %>
-                  <a class="btn btn-warning btn-sm"href = "/campgrounds/<%=campground._id%>/edit">EDIT</a></button>
-                  <form id = "delete-form" method = "POST" action = "/campgrounds/<%=campground._id%>?_method=delete">
+                <% if(currentUser && hotel.author.id.equals(currentUser._id)){ %>
+                  <a class="btn btn-warning btn-sm"href = "/hotels/<%=hotel._id%>/edit">EDIT</a></button>
+                  <form id = "delete-form" method = "POST" action = "/hotels/<%=hotel._id%>?_method=delete">
                       
                     <button class="btn btn-danger btn-sm">DELETE</button>
                       
@@ -36,9 +36,9 @@
             
             <div class = "card">
                 <div class = "text-right">
-                    <a class = "btn btn-success" href = "/campgrounds/<%=campground._id%>/comments/new">Add New Comment</a>
+                    <a class = "btn btn-success" href = "/hotels/<%=hotel._id%>/comments/new">Add New Comment</a>
                 </div>
-             <%campground.comments.forEach(function(el){ %>
+             <%hotel.comments.forEach(function(el){ %>
                 <div class = "row">
                     <div class = "col-md-12">
 
@@ -48,8 +48,8 @@
                     
                     <%if(currentUser && el.author.id.equals(currentUser._id)){%>
                     
-                    <a class = "btn btn-sm btn-warning" href = "/campgrounds/<%=campground._id%>/comments/<%=el._id%>/edit">Edit</a>
-                    <form style = "display: inline;" action = "/campgrounds/<%=campground._id%>/comments/<%=el._id%>?_method=delete" method = "POST">
+                    <a class = "btn btn-sm btn-warning" href = "/hotels/<%=hotel._id%>/comments/<%=el._id%>/edit">Edit</a>
+                    <form style = "display: inline;" action = "/hotels/<%=hotel._id%>/comments/<%=el._id%>?_method=delete" method = "POST">
                         <button  class = "btn btn-sm btn-danger">Delete</button>
                         
                     </form>
@@ -71,8 +71,8 @@
 
 <script>
   function initMap() {
-    var lat = <%= campground.lat %>;
-    var lng = <%= campground.lng %>;
+    var lat = <%= hotel.lat %>;
+    var lng = <%= hotel.lng %>;
     var center = {lat: lat, lng: lng };
     var map = new google.maps.Map(document.getElementById('map'), {
         zoom: 8,
@@ -80,9 +80,9 @@
         scrollwheel: false
     });
     var contentString = `
-      <strong><%= campground.name %><br />
-      <%= campground.location %></strong>
-      <p><%= campground.description %></p>
+      <strong><%= hotel.name %><br />
+      <%= hotel.location %></strong>
+      <p><%= hotel.description %></p>
     `
     var infowindow = new google.maps.InfoWindow({
       content: contentString

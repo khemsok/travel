@@ -1,5 +1,5 @@
 var mongoose = require("mongoose");
-var Campground = require("./models/campground");
+var Hotel = require("./models/hotel");
 var Comment = require("./models/comment");
 
 
@@ -22,20 +22,20 @@ var data = [{
 
 
 function seedDB() {
-    Campground.remove({}, function(err) {
+    Hotel.remove({}, function(err) {
         // if (err) {
         //     console.log(err);
 
         // }
         // else {
-        //     console.log("removed campgrounds!");
+        //     console.log("removed hotels!");
         //     data.forEach(function(seed) {
-        //         Campground.create(seed, function(err, el) {
+        //         Hotel.create(seed, function(err, el) {
         //             if (err) {
         //                 console.log(err);
         //             }
         //             else {
-        //                 console.log("added a campground");
+        //                 console.log("added a hotel");
         //                 Comment.create({
         //                     text: "This place is great, but I wish there was internet",
         //                     author: "Homer"
