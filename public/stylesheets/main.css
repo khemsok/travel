@@ -41,7 +41,9 @@ html {
     text-align: center;
     font-family: 'Kalam', cursive;
 }
-
+#navBrand{
+    font-weight: 700;
+}
 .below {
     text-align: center;
     line-height: 30px;
@@ -88,7 +90,7 @@ html {
 
 #view {
     display: block;
-    font-size: 1.2em;
+    font-size: 1em;
     color: white;
     text-decoration: none;
     bottom: 25px;
@@ -98,6 +100,8 @@ html {
     text-align: center;
     line-height: 10px;
     margin-bottom: 50px;
+    font-weight: 700;
+    margin-top: 2em;
 }
 
 #view:hover {
