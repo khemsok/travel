@@ -21,7 +21,7 @@ body,html{
 }
 
 .container2{
-    width: 30%;
+    width: 100%;
     margin: 0 auto;
 }
 input{
@@ -29,7 +29,7 @@ input{
 }
 .box{
     display: block;
-    width: 50%;
+    width: 250px;
     margin: 0 auto;
     text-align: center;
     border: 0;
