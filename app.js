@@ -23,7 +23,8 @@ app.set("view engine", "ejs");
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.static(__dirname + "/public"));
 // mongoose.connect('mongodb://ace:password1@ds235431.mlab.com:35431/travelwithme', { useNewUrlParser: true });
-mongoose.connect(process.env.DATABASEURL, { useNewUrlParser: true });
+// mongoose.connect("mongodb://localhost:27017/travel", { useNewUrlParser: true });
+mongoose.connect("mongodb://ace:password1@ds235431.mlab.com:35431/travelwithme", { useNewUrlParser: true });
 
 
 app.use(methodOverride("_method"));
@@ -58,7 +59,7 @@ app.use(indexRoutes);
 app.use("/campgrounds", campgroundRoutes);
 app.use("/campgrounds/:id/comments",commentRoutes);
 
-app.listen(process.env.PORT, process.env.IP, function() {
+app.listen(3000, function() {
     console.log("Server has started");
 });
 
