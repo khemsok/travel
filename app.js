@@ -28,9 +28,8 @@ mongoose.connect("mongodb://ace:password1@ds235431.mlab.com:35431/travelwithme",
 
 
 app.use(methodOverride("_method"));
-app.use(flash());
 app.locals.moment = require('moment');
-
+app.use(flash());
 
 // seedDB();
 
@@ -62,5 +61,7 @@ app.use("/hotels/:id/comments",commentRoutes);
 app.listen(3000, function() {
     console.log("Server has started");
 });
+
+
 
 
