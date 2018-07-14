@@ -88,3 +88,18 @@ a:hover{
     color: rgb(126, 122, 122);
     text-decoration: none;
 }
+
+.alert-danger{
+    background-color: rgba(231, 116, 116, 0);
+    border: 0;
+    color: white;
+    text-align: center;
+}
+
+.alert-success{
+    background-color: rgba(231, 116, 116, 0);
+    border: 0;
+    color: white;
+    text-align: center;
+
+}

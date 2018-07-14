@@ -36,7 +36,7 @@ router.post("/",middleware.isLoggedIn, function(req,res){
                     comment.save();
                     hotel.comments.push(comment);
                     hotel.save();
-                    req.flash("success", "Successfully added comment");
+                    // req.flash("success", "Successfully added comment");
                     res.redirect("/hotels/"+hotel._id);
 
                 }
@@ -81,7 +81,7 @@ router.delete("/:comment_id",middleware.checkCommentOwnership, function(req,res)
             res.redirect("back");
         }
         else{
-            req.flash("success", "Comment deleted");
+            // req.flash("success", "Comment deleted");
             res.redirect("/hotels/"+req.params.id);
         }
     });

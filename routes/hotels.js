@@ -112,7 +112,7 @@ router.put("/:id", middleware.checkHotelOwnership, function(req, res){
             req.flash("error", err.message);
             res.redirect("back");
         } else {
-            req.flash("success","Successfully Updated!");
+            // req.flash("success","Successfully Updated!");
             res.redirect("/hotels/" + hotel._id);
         }
     });
@@ -126,7 +126,7 @@ router.delete("/:id", middleware.checkHotelOwnership, function(req, res) {
             console.log(err);
         }
         else {
-            req.flash("success", "Hotel deleted")
+            // req.flash("success", "Hotel deleted")
             res.redirect("/hotels");
         }
     });

@@ -121,6 +121,8 @@ html {
 
 .imgContainer{
     position: relative;
+    margin: 10px;
+
 }
 
 .namecontainer:hover{
@@ -146,5 +148,51 @@ html {
 .img-thumbnail{
     border: 0;
     border-radius: 0;
+
+}
+
+@media only screen and (max-width: 720px) {
+    #bold{
+        font-size: 13em;
+        line-height: 120px;
+    }
+
+
+}
+
+@media only screen and (max-width: 600px) {
+    #bold{
+        font-size: 10em;
+    }
+    .backgroundContainer{
+        background-image: url("http://i.imgur.com/rvycyF8.jpg");
+    }
+    
+}
+
+
+@media only screen and (max-width: 500px) {
+    #bold{
+        font-size: 8em;
+        line-height: 80px;
+    }
+    .below {
+        font-size: 1em;
+        line-height: 20px;
+    }
+}
+
+.alert-danger{
+    background-color: rgba(231, 116, 116, 0);
+    border: 0;
+    color: white;
+    text-align: center;
+}
+
+.alert-success{
+    background-color: rgba(231, 116, 116, 0);
+    border: 0;
+    color: white;
+    text-align: center;
 
 }

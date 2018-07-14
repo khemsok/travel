@@ -46,18 +46,8 @@
         </div>
     </nav>
 
-    <div class="container">
-        <% if(error && error.length > 0){ %>
-            <div class="alert alert-danger" role="alert">
-                <%=error%>
-            </div>
-            <%}%>
-                <% if(success && success.length > 0){ %>
-                    <div class="alert alert-success" role="alert">
-                        <%=success%>
-                    </div>
-                    <%}%>
-    </div>
+
+
   <div class="backgroundContainer"></div>
   <h1 style="text-align: center;">LOGIN</h1>
   <div class="container2">
@@ -75,5 +65,16 @@
     <a class = "back" href="/hotels">Go Back</a>
   </div>
 
+
+  <% if(error && error.length > 0){ %>
+    <div class="alert alert-danger" role="alert">
+        <%=error%>
+    </div>
+    <%}%>
+        <% if(success && success.length > 0){ %>
+            <div class="alert alert-success" role="alert">
+                <%=success%>
+            </div>
+            <%}%>
   <% include ./partials/footer %>
 
