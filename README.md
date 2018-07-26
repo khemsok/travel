@@ -1,2 +1,2 @@
-# travel
-Web application that allows visitor to create logins and add hotels that they have visited. Implemented using NodeJS, Express, MongoDB, etc.
+# TRAVEL
+Travel is a fully functioning and responsive web application that allows visitor to create accounts and post their reviews on hotels that they have visited. It features functionality such as posting picture, writing comments, viewing other hotels that have been published by other users, and as well as checking out the exact location of where the hotel is located with the help of Google Geolocation API. All of the data is stored using MongoDB database on a cloud server mLab.
